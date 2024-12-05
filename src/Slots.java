@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import java.util.Collections;
 
 public class Slots {
     private Scanner scan;
@@ -17,7 +17,6 @@ public class Slots {
         printQuestion("Enter the amount of money you would like to put into the machine: ");
         double money = scan.nextDouble();
         money = (int)(money*100)/100.0;
-        balance.subtract(money);
         scan.nextLine();
         while (money > balance.getMoney() || money < 0) {
             System.out.println("Invalid value");
@@ -41,10 +40,15 @@ public class Slots {
                 scan.nextLine();
             }
             money -= bet;
-            for (int i = 1; i <= 5; i++) {
+            for (int i = 1; i <= 20; i++) {
                 System.out.println("-------------");
                 System.out.println(slot[(int)(Math.random()*6)] + " | "  + slot[(int)(Math.random()*6)] + " | " + slot[(int)(Math.random()*6)]);
                 System.out.println("-------------");
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    System.err.println("Interrupted: " + e.getMessage());
+                }
             }
             String fruit1 = slot[(int)(Math.random()*6)];
             String fruit2 = slot[(int)(Math.random()*6)];

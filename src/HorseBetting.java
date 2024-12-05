@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Collections;
 
 public class HorseBetting {
 
@@ -115,6 +116,11 @@ public class HorseBetting {
                 } else {
                     greenHorse = greenHorse.substring(0,greenHorse.indexOf("🟢"))  +  greenHorsedistance + "🟢🐎" + greenHorse.substring(greenHorse.indexOf("🐎")+ 2 + greenHorseStep);
                 }
+            }
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                System.err.println("Interrupted: " + e.getMessage());
             }
 
             yellowHorseIndex = yellowHorse.indexOf("🐎");
