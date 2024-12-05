@@ -14,13 +14,13 @@ public class Blackjack{
 
     public Blackjack(Scanner scan, Money balance){
         blackjack = new BlackjackLogic(deck, playerHand, dealerHand);
-        deck = blackjack.initializeDeck();
-        playerHand = new ArrayList<>();
-        dealerHand = new ArrayList<>();
         this.balance = balance;
         this.scan = scan;
     }
     public void startBlackjack(){
+        deck = blackjack.initializeDeck();
+        playerHand = new ArrayList<>();
+        dealerHand = new ArrayList<>();
         Collections.shuffle(deck);
         dealCards();
         System.out.println("_______________________________");

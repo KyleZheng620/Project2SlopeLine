@@ -15,27 +15,40 @@ public class Colosseum {
             // Gladiator 1 attacks
             int attackRoll = rng.nextInt(gladiator1.getAgility()) + 1;
             int defenseRoll = rng.nextInt(gladiator2.getAgility()) + 1;
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                System.err.println("Interrupted: " + e.getMessage());
+            }
             if (attackRoll > defenseRoll) {
                 int damage = rng.nextInt(gladiator1.getStrength()) + 1;
                 gladiator2.takeDamage(damage);
                 System.out.printf("%s hits %s for %d damage!\n", gladiator1.getName(), gladiator2.getName(), damage);
+                System.out.println(gladiator1.getName() + "'s HP: " + gladiator1.getHealth());
             } else {
                 System.out.printf("%s misses %s!\n", gladiator1.getName(), gladiator2.getName());
             }
-
+            System.out.println();
             // Check if fight is over
             if (gladiator2.getHealth() <= 0) break;
 
             // Gladiator 2 attacks
             attackRoll = rng.nextInt(gladiator2.getAgility()) + 1;
             defenseRoll = rng.nextInt(gladiator1.getAgility()) + 1;
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                System.err.println("Interrupted: " + e.getMessage());
+            }
             if (attackRoll > defenseRoll) {
                 int damage = rng.nextInt(gladiator2.getStrength()) + 1;
                 gladiator1.takeDamage(damage);
                 System.out.printf("%s hits %s for %d damage!\n", gladiator2.getName(), gladiator1.getName(), damage);
+                System.out.println(gladiator2.getName() + "'s HP: " + gladiator2.getHealth());
             } else {
                 System.out.printf("%s misses %s!\n", gladiator2.getName(), gladiator1.getName());
             }
+            System.out.println();
         }
 
         return gladiator1.getHealth() > 0;
